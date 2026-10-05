@@ -1,0 +1,35 @@
+{
+  "name": "codex-usage-status",
+  "displayName": "Codex Usage Status",
+  "description": "Muestra los limites de uso de Codex en la barra de estado de VS Code.",
+  "version": "0.1.0",
+  "publisher": "yoan-local",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished", "onCommand:codexUsage.refresh", "onCommand:codexUsage.showDetails"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "codexUsage.refresh", "title": "Codex Usage: Actualizar" },
+      { "command": "codexUsage.showDetails", "title": "Codex Usage: Ver detalle" }
+    ],
+    "configuration": {
+      "title": "Codex Usage Status",
+      "properties": {
+        "codexUsage.codexPath": {
+          "type": "string",
+          "default": "codex",
+          "description": "Ruta al ejecutable Codex. En Windows normalmente basta con codex o codex.cmd."
+        },
+        "codexUsage.refreshMinutes": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "description": "Intervalo de actualizacion en minutos."
+        }
+      }
+    }
+  },
+  "scripts": { "test": "node --test" },
+  "license": "MIT"
+}
